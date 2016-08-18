@@ -8,3 +8,23 @@ class reposado::params {
   $git_source = 'https://github.com/wdas/reposado'
   $git_ensure = 'present'
 }
+
+case $::osfamily {
+    'Debian': {
+      $system_services          = '/etc/init.d'
+
+    }
+    'RedHat': {
+      $system_services             = '/etc/init.d'
+
+    }
+    'Ubuntu': {
+      $system_services             = '/etc/init.d'
+
+    }
+
+    default: {
+      fail("The ${module_name} module is not supported on an ${::osfamily} based system.")
+    }
+  }
+}
