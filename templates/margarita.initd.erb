@@ -1,0 +1,40 @@
+#!/bin/bash
+# chkconfig: 3 99 01
+# description: Manage Reposado by the web interface Margarita
+# processname: margarita
+
+case "$1" in
+start)
+
+nohup /usr/bin/python <%= @base_dir -%>/margarita/margarita.py >/dev/null 2>&1 &
+
+;;
+
+stop)
+
+MARGARITA_PID=`ps aux | grep margarita.py | grep -v grep | awk '{ print $2 }'`
+kill $MARGARITA_PID
+
+;;
+
+restart)
+$0 stop
+$0 start
+;;
+
+status)
+
+if ps aux | grep margarita.py | grep -v grep >/dev/null 2>&1; then
+echo "Running"
+exit 0
+else
+echo "Not Running"
+exit 1
+fi
+
+;;
+
+*)
+echo "Usage: $0 {start|stop|restart|status}"
+exit 1
+esac
