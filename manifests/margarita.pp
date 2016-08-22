@@ -13,7 +13,7 @@ class reposado::margarita (
   $preferences_link        = "${margarita_root}/preferences.plist",
   $reposadolib_link        = "${margarita_root}/reposadolib",
   $reposado_root           = $::reposado::params::reposado_root,
-  $system_services         = $::reposado::params::system_services,
+  $system_services         = $::reposado::params::system_services,)
 
 
   {
@@ -24,10 +24,10 @@ class reposado::margarita (
     owner    => $user,
     group    => $group,
     provider => 'git',
-    require  => [User[$user], Group[$group]],
+    require  => [[User[$user], Group[$group]],
     source   => $margarita_git_source,
-    revision => $git_revision,
-    require => Directory[$margarita_root];
+    revision => $git_revision;
+
     }
     file {
       [$margarita_root]:
@@ -67,5 +67,3 @@ if $manage_simplejson {
     ensure   => 'present',
     provider => 'pip'; }
 }
-
-  }
