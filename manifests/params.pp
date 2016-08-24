@@ -7,8 +7,8 @@ class reposado::params {
   $server_name = "${::hostname}.${::domain}"
   $git_source = 'https://github.com/wdas/reposado'
   $git_ensure = 'present'
-  $margarita_git_source = 'https//github.com/jessepeterson/margarita.git'
-  $margarita_git_revision = ''
+  $margarita_git_source = 'https://github.com/jessepeterson/margarita.git'
+  $margarita_git_revision = undef
   $reposado_root = "${base_dir}/reposado"
 }
 
