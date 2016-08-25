@@ -11,22 +11,3 @@ class reposado::params {
   $margarita_git_revision = undef
   $reposado_root = "${base_dir}/reposado"
 }
-
-case $::osfamily {
-    'Debian': {
-      $system_services          = '/etc/init.d'
-
-    }
-    'RedHat': {
-      $system_services             = '/etc/init.d'
-
-    }
-    'Ubuntu': {
-      $system_services             = '/etc/init.d'
-
-    }
-
-    default: {
-      fail("The ${module_name} module is not supported on an ${::osfamily} based system.")
-    }
-  }
