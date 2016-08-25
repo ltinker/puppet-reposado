@@ -1,0 +1,12 @@
+[Unit]
+Description=Margarita Update Management Interface.
+After=network.target
+
+[Service]
+Type=simple
+User=<%= @user -%>
+ExecStart=/usr/bin/python <%= @base_dir -%>/margarita/margarita.py >/dev/null 2>&1> &
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
