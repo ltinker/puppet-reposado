@@ -1,4 +1,4 @@
-class reposado::margarita (
+class reposado::margarita {
   $user                     = $::reposado::params::user,
   $group                    = $::reposado::params::group,
   $server_name              = $::reposado::params::server_name,
@@ -7,12 +7,12 @@ class reposado::margarita (
   $margarita_root           = "${::reposado::params::base_dir}/margarita",
   $manage_margarita_service = true,
   $margarita_git_source     = $::reposado::params::margarita_git_source,
-  $margarita_git_revision   = $::reposado::params::margarita_git_revision,
   $manage_flask             = true,
   $manage_simplejson        = true,
   $preferences_link         = "${margarita_root}/preferences.plist",
   $reposadolib_link         = "${margarita_root}/reposadolib",
   $reposado_root            = $::reposado::params::reposado_root,
+
 
 
   {
@@ -87,4 +87,5 @@ if $manage_simplejson {
   package { 'simplejson':
     ensure   => 'present',
     provider => 'pip'; }
+}
 }
