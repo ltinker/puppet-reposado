@@ -46,7 +46,7 @@ class reposado::margarita (
         require => File["${reposado_root}/code/preferences.plist"];
     }
   if $manage_margarita_service{
-    if $facts['initservice'] == 'initd'{
+    if $::initservice == 'initd'{
         $system_services = '/etc/init.d'
         file{"${system_services}/margarita":
           ensure  => 'present',
@@ -58,7 +58,7 @@ class reposado::margarita (
         }
     }
   }
-    elsif $facts['initservice'] == 'systemd'{
+    elsif $::initservice == 'systemd'{
         $system_services = '/etc/systemd/system'
         file{"${system_services}/margarita.service":
           ensure  => 'present',
