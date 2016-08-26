@@ -5,3 +5,4 @@ Facter.add("initservice") do
   setcode do
     `ls -l /proc/1/exe | awk '{n=split($NF, N, "/"); { print N[n] }}'`
   end
+end
