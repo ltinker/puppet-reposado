@@ -1,18 +1,19 @@
-class reposado::margarita {
-  $user                     = $::reposado::params::user
-  $group                    = $::reposado::params::group
-  $server_name              = $::reposado::params::server_name
-  $git_ensure               = $::reposado::params::git_ensure
-  $margarita_git_revision   = $::reposado::params::margarita_git_revision
-  $margarita_root           = "${::reposado::params::base_dir}/margarita"
-  $manage_margarita_service = true
-  $margarita_git_source     = $::reposado::params::margarita_git_source
-  $manage_flask             = true
-  $manage_simplejson        = true
-  $preferences_link         = "${margarita_root}/preferences.plist"
-  $reposadolib_link         = "${margarita_root}/reposadolib"
-  $reposado_root            = $::reposado::params::reposado_root
-
+class reposado::margarita (
+  $user                     = $::reposado::params::user,
+  $group                    = $::reposado::params::group,
+  $server_name              = $::reposado::params::server_name,
+  $git_ensure               = $::reposado::params::git_ensure,
+  $margarita_git_revision   = $::reposado::params::margarita_git_revision,
+  $margarita_root           = "${::reposado::params::base_dir}/margarita",
+  $manage_margarita_service = true,
+  $margarita_git_source     = $::reposado::params::margarita_git_source,
+  $manage_flask             = true,
+  $manage_simplejson        = true,
+  $preferences_link         = "${margarita_root}/preferences.plist",
+  $reposadolib_link         = "${margarita_root}/reposadolib",
+  $reposado_root            = $::reposado::params::reposado_root,
+  )
+  {
 
   vcsrepo { $margarita_root:
     ensure   => $git_ensure,
