@@ -19,7 +19,7 @@ class reposado::margarita {
     owner    => $user,
     group    => $group,
     provider => 'git',
-    require  => [[User[$user], Group[$group]],
+    require  => [User[$user], Group[$group]],
     source   => $margarita_git_source,
     revision => $git_revision;
 
