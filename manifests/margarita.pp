@@ -32,18 +32,16 @@ class reposado::margarita (
         group  => $group,
         mode   => '0755';
 
-      "$reposadolib_link":
+      $reposadolib_link:
         ensure  => 'link',
         owner   => $user,
         group   => $group,
-        target  => "${reposado_root}/code/reposadolib",
-        require => Vcsrepo[$reposado_root];
-      "$preferences_link":
+        target  => "${reposado_root}/code/reposadolib";
+      $preferences_link:
         ensure  => 'link',
         owner   => $user,
         group   => $group,
-        target  => "${reposado_root}/code/preferences.plist",
-        require => File["${reposado_root}/code/preferences.plist"];
+        target  => "${reposado_root}/code/preferences.plist";
     }
   if $manage_margarita_service{
     if $::initservice == 'initd'{
@@ -53,8 +51,7 @@ class reposado::margarita (
           owner   => $user,
           group   => $group,
           mode    => '0755',
-          content => template('reposado/margarita.initd.erb'),
-          require => Vcsrepo[$margarita_root];
+          content => template('reposado/margarita.initd.erb');
         }
     }
   }
